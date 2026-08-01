@@ -1,18 +1,14 @@
 package com.example.proyectoequiposadso12
 
-import android.R.attr.level
-import com.google.firebase.appdistribution.gradle.ApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.getValue
 
 object RetrofitClient {
 
     private const val BASE_URL = "https://dummyjson.com/"
 
-    // Muestra en el Logcat lo que se envía y se recibe (útil para depurar)
     private val logging = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
@@ -21,7 +17,6 @@ object RetrofitClient {
         .addInterceptor(logging)
         .build()
 
-    // 'by lazy' = se crea solo la primera vez que se usa
     val api: ApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
